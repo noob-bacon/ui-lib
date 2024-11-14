@@ -1,0 +1,81 @@
+-- UI Library
+local UILibrary = {}
+
+-- Function to create a new window
+function UILibrary:CreateWindow(name, size, position)
+    local ScreenGui = Instance.new("ScreenGui")
+    ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    
+    local Window = Instance.new("Frame")
+    Window.Name = name or "Window"
+    Window.Parent = ScreenGui
+    Window.AnchorPoint = Vector2.new(0.5, 0.5)
+    Window.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    Window.BorderSizePixel = 0
+    Window.Position = position or UDim2.new(0.5, 0, 0.5, 0)
+    Window.Size = size or UDim2.new(0, 600, 0, 400)
+    
+    local WindowUICorner = Instance.new("UICorner")
+    WindowUICorner.Parent = Window
+
+    return Window
+end
+
+-- Function to add a title bar to a window
+function UILibrary:AddTitleBar(window, title)
+    local WindowName = Instance.new("Frame")
+    WindowName.Name = "WindowName"
+    WindowName.Parent = window
+    WindowName.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    WindowName.BorderSizePixel = 0
+    WindowName.Position = UDim2.new(0.025, 0, 0.0375, 0)
+    WindowName.Size = UDim2.new(0, 570, 0, 50)
+
+    local TitleUICorner = Instance.new("UICorner")
+    TitleUICorner.Parent = WindowName
+
+    local TextLabel = Instance.new("TextLabel")
+    TextLabel.Parent = WindowName
+    TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    TextLabel.BorderSizePixel = 0
+    TextLabel.Size = UDim2.new(0, 200, 0, 50)
+    TextLabel.Font = Enum.Font.SourceSans
+    TextLabel.Text = title or "Window Title"
+    TextLabel.TextColor3 = Color3.fromRGB(245, 245, 245)
+    TextLabel.TextSize = 30
+
+    local LabelUICorner = Instance.new("UICorner")
+    LabelUICorner.Parent = TextLabel
+end
+
+-- Function to create a tab
+function UILibrary:CreateTab(window, tabName)
+    local Tab = Instance.new("Frame")
+    Tab.Name = tabName or "Tab"
+    Tab.Parent = window
+    Tab.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    Tab.BorderSizePixel = 0
+    Tab.Position = UDim2.new(0.025, 0, 0.2, 0)
+    Tab.Size = UDim2.new(0, 125, 0, 50)
+    
+    local TabUICorner = Instance.new("UICorner")
+    TabUICorner.Parent = Tab
+
+    local TextButton = Instance.new("TextButton")
+    TextButton.Parent = Tab
+    TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    TextButton.BorderSizePixel = 0
+    TextButton.Size = UDim2.new(0, 125, 0, 50)
+    TextButton.Font = Enum.Font.SourceSans
+    TextButton.Text = tabName or "Tab"
+    TextButton.TextColor3 = Color3.fromRGB(245, 245, 245)
+    TextButton.TextSize = 25
+
+    local ButtonUICorner = Instance.new("UICorner")
+    ButtonUICorner.Parent = TextButton
+
+    return Tab
+end
+
+return UILibrary
