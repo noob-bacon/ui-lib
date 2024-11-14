@@ -1,4 +1,5 @@
-local UILibrary = require(path_to_UILibrary)
+local UILibrary = 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/noob-bacon/ui-lib/refs/heads/main/bacons"))()
 
 local window = UILibrary:CreateWindow("MainWindow", UDim2.new(0, 600, 0, 400), UDim2.new(0.5, 0, 0.5, 0))
 UILibrary:AddTitleBar(window, "My Custom UI")
